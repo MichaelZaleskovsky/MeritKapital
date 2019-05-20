@@ -1,6 +1,6 @@
 package com.meritkapital.products;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -18,7 +18,7 @@ import com.meritkapital.rules.SpotValueDatePeriodRule;
 @JsonTypeName("Spot")
 public class Spot extends AbstractTrade {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date valueDate;
+	private Calendar valueDate;
 
 	public Spot() {
 		super();
@@ -27,19 +27,11 @@ public class Spot extends AbstractTrade {
 		rules.add(new SpotValueDatePeriodRule());
 	}
 
-	public Date getValueDate() {
+	public Calendar getValueDate() {
 		return valueDate;
 	}
 
-	public void setValueDate(Date valueDate) {
+	public void setValueDate(Calendar valueDate) {
 		this.valueDate = valueDate;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Spot [valueDate=" + valueDate + ", customer=" + customer + ", ccyPair=" + ccyPair + ", type=" + type
-				+ ", direction=" + direction + ", tradeDate=" + tradeDate + ", amount1=" + amount1 + ", amount2="
-				+ amount2 + ", rate=" + rate + ", legalEntity=" + legalEntity + ", trader=" + trader + "]";
-	}	
 }

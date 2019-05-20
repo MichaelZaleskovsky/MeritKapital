@@ -15,8 +15,9 @@ public class SpotDateBeforeTradeRule implements Rule {
 	public String check(AbstractTrade trade) {
 		Spot spot = (Spot) trade;
 		String message = "";
-		if (spot.getValueDate().before(spot.getTradeDate())) 
+		if (spot.getValueDate().before(spot.getTradeDate())) {
 			message = "Value date can not be before trade date; valueDate; tradeDate";
+		}
 		return message;
 	}
 

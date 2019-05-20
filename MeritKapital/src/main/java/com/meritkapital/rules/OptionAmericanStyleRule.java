@@ -16,9 +16,13 @@ public class OptionAmericanStyleRule implements Rule {
 	public String check(AbstractTrade trade) {
 		Option option = (Option) trade;
 		String message = "";
-		if(option.getStyle().equalsIgnoreCase(MeritKapitalApplication.AMERICAN))
-			if(!option.getExcerciseStartDate().after(option.getTradeDate()) || !option.getExcerciseStartDate().before(option.getExpiryDate()))
-				message = "Excercise Start Date must be after the trade date but before the expiry date; excerciseStartDate; tradeDate; expiryDate";
+		if(option.getStyle().equalsIgnoreCase(MeritKapitalApplication.AMERICAN)) {
+			if(!option.getExcerciseStartDate().after(option.getTradeDate()) || 
+					!option.getExcerciseStartDate().before(option.getExpiryDate())) {
+				message = "Excercise Start Date must be after the trade date but before the expiry date; "
+						+ "excerciseStartDate; tradeDate; expiryDate";
+			}
+		}
 		return message;
 	}
 

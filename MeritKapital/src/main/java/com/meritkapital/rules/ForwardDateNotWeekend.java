@@ -1,6 +1,6 @@
 package com.meritkapital.rules;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Set;
 
 import com.meritkapital.dao.DbAccess;
@@ -19,11 +19,14 @@ public class ForwardDateNotWeekend implements Rule {
 	public String check(AbstractTrade trade) {
 		Forward forward = (Forward) trade;
 		String message = "";
-		DbAccess db = new DbAccess();
+		DbAccess db = DbAccess.getInstance();
 		String currency = forward.getCcyPair().substring(0, 3).toUpperCase();
-		Set<Date> holidays = db.getHolidays(currency);
-		if (forward.getValueDate().getDay() == 0 || forward.getValueDate().getDay() == 6 || holidays.contains(forward.getValueDate()))
+		Set<Calendar> holidays = db.getHolidays(currency);
+		if (forward.getValueDate().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY || 
+				forward.getValueDate().get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || 
+				holidays.contains(forward.getValueDate())) {
 			message = "Value date can not be weekend or holiday; valueDate";
+		}
 		return message;
 	}
 

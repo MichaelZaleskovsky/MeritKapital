@@ -1,6 +1,6 @@
 package com.meritkapital.products;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -17,19 +17,19 @@ import com.meritkapital.rules.OptionExpiryAndPremiumDateRule;
 @JsonTypeName("VanillaOption")
 public class Option extends AbstractTrade {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date excerciseStartDate;
+	private Calendar excerciseStartDate;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date deliveryDate;
+	private Calendar deliveryDate;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date expiryDate;
+	private Calendar expiryDate;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date premiumDate;
-	String style;
-	String strategy;
-	String payCcy;
-	Double premium;
-	String premiumCcy;
-	String premiumType;
+	private Calendar premiumDate;
+	private String style;
+	private String strategy;
+	private String payCcy;
+	private Double premium;
+	private String premiumCcy;
+	private String premiumType;
 	
 	public Option() {
 		super();
@@ -37,22 +37,36 @@ public class Option extends AbstractTrade {
 		rules.add(new OptionAmericanStyleRule());
 	}
 
-	@Override
-	public String toString() {
-		return "Option [excerciseStartDate=" + excerciseStartDate + ", deliveryDate=" + deliveryDate + ", expiryDate="
-				+ expiryDate + ", premiumDate=" + premiumDate + ", style=" + style + ", strategy=" + strategy
-				+ ", payCcy=" + payCcy + ", premium=" + premium + ", premiumCcy=" + premiumCcy + ", premiumType="
-				+ premiumType + ", customer=" + customer + ", ccyPair=" + ccyPair + ", type=" + type + ", direction="
-				+ direction + ", tradeDate=" + tradeDate + ", amount1=" + amount1 + ", amount2=" + amount2 + ", rate="
-				+ rate + ", legalEntity=" + legalEntity + ", trader=" + trader + "]";
-	}
-
-	public Date getExcerciseStartDate() {
+	public Calendar getExcerciseStartDate() {
 		return excerciseStartDate;
 	}
 
-	public void setExcerciseStartDate(Date excerciseStartDate) {
+	public void setExcerciseStartDate(Calendar excerciseStartDate) {
 		this.excerciseStartDate = excerciseStartDate;
+	}
+
+	public Calendar getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(Calendar deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+
+	public Calendar getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Calendar expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public Calendar getPremiumDate() {
+		return premiumDate;
+	}
+
+	public void setPremiumDate(Calendar premiumDate) {
+		this.premiumDate = premiumDate;
 	}
 
 	public String getStyle() {
@@ -69,22 +83,6 @@ public class Option extends AbstractTrade {
 
 	public void setStrategy(String strategy) {
 		this.strategy = strategy;
-	}
-
-	public Date getDeliveryDate() {
-		return deliveryDate;
-	}
-
-	public void setDeliveryDate(Date deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
-
-	public Date getExpiryDate() {
-		return expiryDate;
-	}
-
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
 	}
 
 	public String getPayCcy() {
@@ -119,13 +117,4 @@ public class Option extends AbstractTrade {
 		this.premiumType = premiumType;
 	}
 
-	public Date getPremiumDate() {
-		return premiumDate;
-	}
-
-	public void setPremiumDate(Date premiumDate) {
-		this.premiumDate = premiumDate;
-	}
-	
-	
 }

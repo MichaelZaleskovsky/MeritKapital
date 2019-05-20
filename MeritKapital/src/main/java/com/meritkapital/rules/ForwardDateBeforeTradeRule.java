@@ -15,8 +15,9 @@ public class ForwardDateBeforeTradeRule implements Rule {
 	public String check(AbstractTrade trade) {
 		Forward forward = (Forward) trade;
 		String message = "";
-		if (forward.getValueDate().before(forward.getTradeDate())) 
+		if (forward.getValueDate().before(forward.getTradeDate())) {
 			message = "Value date can not be before trade date; valueDate; tradeDate";
+		}
 		return message;
 	}
 

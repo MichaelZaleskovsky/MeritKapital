@@ -1,5 +1,6 @@
 package com.meritkapital.products;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.meritkapital.rules.AllCurrencyValidRule;
 import com.meritkapital.rules.AllValidCustomerRule;
 import com.meritkapital.rules.Rule;
@@ -29,17 +29,17 @@ import com.meritkapital.rules.Rule;
         @JsonSubTypes.Type(value = Forward.class, name = "Forward")}
 )
 public abstract class AbstractTrade {
-	String customer;
-	String ccyPair;
-	String type;
-	String direction;
+	private String customer;
+	private String ccyPair;
+	private String type;
+	private String direction;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	Date tradeDate;
-	double amount1;
-	double amount2;
-	double rate;
-	String legalEntity;
-	String trader;
+	private Calendar tradeDate;
+	private double amount1;
+	private double amount2;
+	private double rate;
+	private String legalEntity;
+	private String trader;
 	List<Rule> rules;
 	
 	public AbstractTrade() {
@@ -74,9 +74,9 @@ public abstract class AbstractTrade {
 	  
 	  public void setDirection(String direction) { this.direction = direction; }
 	  
-	  public Date getTradeDate() { return tradeDate; }
+	  public Calendar getTradeDate() { return tradeDate; }
 	  
-	  public void setTradeDate(Date tradeDate) { this.tradeDate = tradeDate; }
+	  public void setTradeDate(Calendar tradeDate) { this.tradeDate = tradeDate; }
 	  
 	  public double getAmount1() { return amount1; }
 	  

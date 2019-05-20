@@ -15,8 +15,9 @@ public class OptionExpiryAndPremiumDateRule implements Rule {
 	public String check(AbstractTrade trade) {
 		Option option = (Option) trade;
 		String message = "";
-		if(!option.getExpiryDate().before(option.getDeliveryDate()) || !option.getPremiumDate().before(option.getDeliveryDate()))
+		if(!option.getExpiryDate().before(option.getDeliveryDate()) || !option.getPremiumDate().before(option.getDeliveryDate())) {
 			message = "Expiry date and premium date must be before delivery date; expiryDate; premiumDate; deliveryDate";
+		}
 		return message;
 	}
 

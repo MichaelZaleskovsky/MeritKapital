@@ -14,8 +14,10 @@ public class AllValidCustomerRule implements Rule {
 	@Override
 	public String check(AbstractTrade trade) {
 		String message = "";
-		DbAccess db = new DbAccess();
-		if(!db.getCustomers().contains(trade.getCustomer())) message = "Customer is not valid; customer";
+		DbAccess db = DbAccess.getInstance();
+		if(!db.getCustomers().contains(trade.getCustomer())) {
+			message = "Customer is not valid; customer";
+		}
 		return message;
 	}
 

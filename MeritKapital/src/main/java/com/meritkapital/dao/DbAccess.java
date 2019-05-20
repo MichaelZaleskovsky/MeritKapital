@@ -7,86 +7,95 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Mock class whic simulate real access to the Database
+ * Mock class which simulate real access to the Database
  * @author Zaleskovskiy Mikhail
  *
  */
 public class DbAccess {
-	Date[] hdE = {
-		new Calendar.Builder().setDate(2016,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2016,2,25).build().getTime(),
-		new Calendar.Builder().setDate(2016,2,28).build().getTime(),
-		new Calendar.Builder().setDate(2016,4,1).build().getTime(),
-		new Calendar.Builder().setDate(2016,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2016,11,26).build().getTime(),
-		new Calendar.Builder().setDate(2017,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2017,3,14).build().getTime(),
-		new Calendar.Builder().setDate(2017,3,17).build().getTime(),
-		new Calendar.Builder().setDate(2017,4,1).build().getTime(),
-		new Calendar.Builder().setDate(2017,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2017,11,26).build().getTime(),
-		new Calendar.Builder().setDate(2018,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2018,2,30).build().getTime(),
-		new Calendar.Builder().setDate(2018,3,2).build().getTime(),
-		new Calendar.Builder().setDate(2018,4,1).build().getTime(),
-		new Calendar.Builder().setDate(2018,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2018,11,26).build().getTime(),
-		new Calendar.Builder().setDate(2019,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2019,3,19).build().getTime(),
-		new Calendar.Builder().setDate(2019,3,22).build().getTime(),
-		new Calendar.Builder().setDate(2019,4,1).build().getTime(),
-		new Calendar.Builder().setDate(2019,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2019,11,26).build().getTime()
-	};
-	Date[] hdU = {
-		new Calendar.Builder().setDate(2016,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2016,0,18).build().getTime(),
-		new Calendar.Builder().setDate(2016,1,15).build().getTime(),
-		new Calendar.Builder().setDate(2016,4,30).build().getTime(),
-		new Calendar.Builder().setDate(2016,6,4).build().getTime(),
-		new Calendar.Builder().setDate(2016,8,5).build().getTime(),
-		new Calendar.Builder().setDate(2016,9,10).build().getTime(),
-		new Calendar.Builder().setDate(2016,10,11).build().getTime(),
-		new Calendar.Builder().setDate(2016,10,24).build().getTime(),
-		new Calendar.Builder().setDate(2016,11,26).build().getTime(),
-		new Calendar.Builder().setDate(2017,0,2).build().getTime(),
-		new Calendar.Builder().setDate(2017,0,16).build().getTime(),
-		new Calendar.Builder().setDate(2017,1,20).build().getTime(),
-		new Calendar.Builder().setDate(2017,4,29).build().getTime(),
-		new Calendar.Builder().setDate(2017,6,4).build().getTime(),
-		new Calendar.Builder().setDate(2017,8,4).build().getTime(),
-		new Calendar.Builder().setDate(2017,9,9).build().getTime(),
-		new Calendar.Builder().setDate(2017,10,11).build().getTime(),
-		new Calendar.Builder().setDate(2017,10,23).build().getTime(),
-		new Calendar.Builder().setDate(2017,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2018,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2018,0,15).build().getTime(),
-		new Calendar.Builder().setDate(2018,1,19).build().getTime(),
-		new Calendar.Builder().setDate(2018,4,28).build().getTime(),
-		new Calendar.Builder().setDate(2018,6,4).build().getTime(),
-		new Calendar.Builder().setDate(2018,8,3).build().getTime(),
-		new Calendar.Builder().setDate(2018,9,8).build().getTime(),
-		new Calendar.Builder().setDate(2018,10,12).build().getTime(),
-		new Calendar.Builder().setDate(2018,10,22).build().getTime(),
-		new Calendar.Builder().setDate(2018,11,25).build().getTime(),
-		new Calendar.Builder().setDate(2019,0,1).build().getTime(),
-		new Calendar.Builder().setDate(2019,0,21).build().getTime(),
-		new Calendar.Builder().setDate(2019,1,18).build().getTime(),
-		new Calendar.Builder().setDate(2019,4,27).build().getTime(),
-		new Calendar.Builder().setDate(2019,6,4).build().getTime(),
-		new Calendar.Builder().setDate(2019,8,2).build().getTime(),
-		new Calendar.Builder().setDate(2019,9,14).build().getTime(),
-		new Calendar.Builder().setDate(2019,10,11).build().getTime(),
-		new Calendar.Builder().setDate(2019,10,28).build().getTime(),
-		new Calendar.Builder().setDate(2019,11,25).build().getTime(),
-	};
-	Set<Date> EuroHoliday = new HashSet<>(Arrays.asList(hdE));
-	Set<Date> UsdHoliday = new HashSet<>(Arrays.asList(hdU));
 	
-	String[] ss = {"PLUTO1", "PLUTO2"};
-	Set<String> customers = new HashSet<>(Arrays.asList(ss));
+	private static DbAccess instance = new DbAccess();
 	
-	String[] Iso = {
+	private DbAccess() {};
+	
+	public static DbAccess getInstance() {
+		return instance;
+	}
+	
+	private Calendar[] holidayDataEuro = {
+			new Calendar.Builder().setDate(2016,0,1).build(),
+			new Calendar.Builder().setDate(2016,2,25).build(),
+			new Calendar.Builder().setDate(2016,2,28).build(),
+			new Calendar.Builder().setDate(2016,4,1).build(),
+			new Calendar.Builder().setDate(2016,11,25).build(),
+			new Calendar.Builder().setDate(2016,11,26).build(),
+			new Calendar.Builder().setDate(2017,0,1).build(),
+			new Calendar.Builder().setDate(2017,3,14).build(),
+			new Calendar.Builder().setDate(2017,3,17).build(),
+			new Calendar.Builder().setDate(2017,4,1).build(),
+			new Calendar.Builder().setDate(2017,11,25).build(),
+			new Calendar.Builder().setDate(2017,11,26).build(),
+			new Calendar.Builder().setDate(2018,0,1).build(),
+			new Calendar.Builder().setDate(2018,2,30).build(),
+			new Calendar.Builder().setDate(2018,3,2).build(),
+			new Calendar.Builder().setDate(2018,4,1).build(),
+			new Calendar.Builder().setDate(2018,11,25).build(),
+			new Calendar.Builder().setDate(2018,11,26).build(),
+			new Calendar.Builder().setDate(2019,0,1).build(),
+			new Calendar.Builder().setDate(2019,3,19).build(),
+			new Calendar.Builder().setDate(2019,3,22).build(),
+			new Calendar.Builder().setDate(2019,4,1).build(),
+			new Calendar.Builder().setDate(2019,11,25).build(),
+			new Calendar.Builder().setDate(2019,11,26).build()
+	};
+	private Calendar[] holidayDataUsd = {
+			new Calendar.Builder().setDate(2016,0,1).build(),
+			new Calendar.Builder().setDate(2016,0,18).build(),
+			new Calendar.Builder().setDate(2016,1,15).build(),
+			new Calendar.Builder().setDate(2016,4,30).build(),
+			new Calendar.Builder().setDate(2016,6,4).build(),
+			new Calendar.Builder().setDate(2016,8,5).build(),
+			new Calendar.Builder().setDate(2016,9,10).build(),
+			new Calendar.Builder().setDate(2016,10,11).build(),
+			new Calendar.Builder().setDate(2016,10,24).build(),
+			new Calendar.Builder().setDate(2016,11,26).build(),
+			new Calendar.Builder().setDate(2017,0,2).build(),
+			new Calendar.Builder().setDate(2017,0,16).build(),
+			new Calendar.Builder().setDate(2017,1,20).build(),
+			new Calendar.Builder().setDate(2017,4,29).build(),
+			new Calendar.Builder().setDate(2017,6,4).build(),
+			new Calendar.Builder().setDate(2017,8,4).build(),
+			new Calendar.Builder().setDate(2017,9,9).build(),
+			new Calendar.Builder().setDate(2017,10,11).build(),
+			new Calendar.Builder().setDate(2017,10,23).build(),
+			new Calendar.Builder().setDate(2017,11,25).build(),
+			new Calendar.Builder().setDate(2018,0,1).build(),
+			new Calendar.Builder().setDate(2018,0,15).build(),
+			new Calendar.Builder().setDate(2018,1,19).build(),
+			new Calendar.Builder().setDate(2018,4,28).build(),
+			new Calendar.Builder().setDate(2018,6,4).build(),
+			new Calendar.Builder().setDate(2018,8,3).build(),
+			new Calendar.Builder().setDate(2018,9,8).build(),
+			new Calendar.Builder().setDate(2018,10,12).build(),
+			new Calendar.Builder().setDate(2018,10,22).build(),
+			new Calendar.Builder().setDate(2018,11,25).build(),
+			new Calendar.Builder().setDate(2019,0,1).build(),
+			new Calendar.Builder().setDate(2019,0,21).build(),
+			new Calendar.Builder().setDate(2019,1,18).build(),
+			new Calendar.Builder().setDate(2019,4,27).build(),
+			new Calendar.Builder().setDate(2019,6,4).build(),
+			new Calendar.Builder().setDate(2019,8,2).build(),
+			new Calendar.Builder().setDate(2019,9,14).build(),
+			new Calendar.Builder().setDate(2019,10,11).build(),
+			new Calendar.Builder().setDate(2019,10,28).build(),
+			new Calendar.Builder().setDate(2019,11,25).build()
+	};
+	private Set<Calendar> holidaysEuro = new HashSet<>(Arrays.asList(holidayDataEuro));
+	private Set<Calendar> holidaysUsd = new HashSet<>(Arrays.asList(holidayDataUsd));
+	
+	private String[] customersData = {"PLUTO1", "PLUTO2"};
+	private Set<String> customers = new HashSet<>(Arrays.asList(customersData));
+	
+	private String[] isoRawData = {
 			"AFN",
 			"EUR",
 			"ALL",
@@ -365,17 +374,18 @@ public class DbAccess {
 
 	};
 
-	Set<String> Iso4217 = new HashSet<>(Arrays.asList(Iso));
+	private Set<String> iso4217 = new HashSet<>(Arrays.asList(isoRawData));
 	
 	/**
 	 * Method return the list of banking holidays for a specific currency
 	 * @param str - 3-letters currency code
 	 * @return - Set with dates of all banking holidays during 2016, 2017, 2018, 2019 years
 	 */
-	public Set<Date> getHolidays(String str){
+	public Set<Calendar> getHolidays(String str){
 		switch(str) {
-			case "EUR": return EuroHoliday;
-			default: return UsdHoliday;
+			case "EUR": return holidaysEuro;
+			case "USD": return holidaysUsd;
+			default: return new HashSet<>();
 		}
 	}
 	
@@ -390,7 +400,7 @@ public class DbAccess {
 	 * @return - Set of valid currency codes according ISO 4217
 	 */
 	public Set<String> getIso4217(){
-		return Iso4217;
+		return iso4217;
 	}
 }
 

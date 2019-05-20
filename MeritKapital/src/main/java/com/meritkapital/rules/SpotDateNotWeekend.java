@@ -1,6 +1,6 @@
 package com.meritkapital.rules;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Set;
 
 import com.meritkapital.dao.DbAccess;
@@ -19,11 +19,14 @@ public class SpotDateNotWeekend implements Rule {
 	public String check(AbstractTrade trade) {
 		Spot spot = (Spot) trade;
 		String message = "";
-		DbAccess db = new DbAccess();
+		DbAccess db = DbAccess.getInstance();
 		String currency = spot.getCcyPair().substring(0, 3).toUpperCase();
-		Set<Date> holidays = db.getHolidays(currency);
-		if (spot.getValueDate().getDay() == 0 || spot.getValueDate().getDay() == 6 || holidays.contains(spot.getValueDate()))
+		Set<Calendar> holidays = db.getHolidays(currency);
+		if (spot.getValueDate().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY  || 
+				spot.getValueDate().get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY  || 
+				holidays.contains(spot.getValueDate())) {
 			message = "Value date can not be weekend or holiday; valueDate";
+		}
 		return message;
 	}
 

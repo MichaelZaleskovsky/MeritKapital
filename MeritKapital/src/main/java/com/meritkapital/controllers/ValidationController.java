@@ -32,7 +32,6 @@ public class ValidationController {
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public List<List<String>> validate(@RequestBody RequestType request) {
 		List<List<String>> response = new LinkedList<>();
-		System.out.println("Request for validate received");
 		request.getTest().forEach(trade -> response.add(trade.validateTrade()));
 		return response;
 	}
