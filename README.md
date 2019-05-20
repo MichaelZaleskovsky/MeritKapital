@@ -5,6 +5,8 @@ Stand-alone server application with embeded Tomcat web-server.
 
 Start application with com.meritkapital.MeritKapitalApplication.java.
 
+Unit test in com.meritkapital.MeritKapitalApplicationTests.java
+
 # Client
 Front-end client in src/main/resource/static folder.
 
